@@ -1,0 +1,9 @@
+C:\Users\Mindi\Desktop\Studia\PRA\Project2\Project2\bin\Release\Music.mdf
+C:\Users\Mindi\Desktop\Studia\PRA\Project2\Project2\bin\Release\Music_log.ldf
+C:\Users\Mindi\Desktop\Studia\PRA\Project2\Project2\bin\Release\Project2.exe.config
+C:\Users\Mindi\Desktop\Studia\PRA\Project2\Project2\bin\Release\Project2.exe
+C:\Users\Mindi\Desktop\Studia\PRA\Project2\Project2\bin\Release\Project2.pdb
+C:\Users\Mindi\Desktop\Studia\PRA\Project2\Project2\obj\Release\Project2.csprojResolveAssemblyReference.cache
+C:\Users\Mindi\Desktop\Studia\PRA\Project2\Project2\obj\Release\Project2.csproj.CoreCompileInputs.cache
+C:\Users\Mindi\Desktop\Studia\PRA\Project2\Project2\obj\Release\Project2.exe
+C:\Users\Mindi\Desktop\Studia\PRA\Project2\Project2\obj\Release\Project2.pdb
