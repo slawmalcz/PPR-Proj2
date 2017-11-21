@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Project2.DataModels;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -16,16 +18,26 @@ namespace Project2
             String test = Console.ReadLine();
             if (test.Equals("y"))
             {
-                try
-                {
-                    DataBaseOperator dataBaseOperator =  DataBaseOperator.Instance;
-                    Console.WriteLine("Succes");
-                }catch(Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                }
+                DataBaseOperator dataBaseOperator = DataBaseOperator.Instance;
+                Console.WriteLine("Succes Database connection");
+                DataTable dataTable = dataBaseOperator.QueriesNo1(@"SELECT * FROM Albums");
+                Console.WriteLine("Succes Data injection");
+                Console.WriteLine("Extracting data:");
+                PrintData(dataTable);
+
             }
             Console.ReadLine();
+        }
+
+        private static void PrintData(DataTable dataTable)
+        {
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                Albums albums = new Albums(dr);
+                //Console.WriteLine(albums.ToString());
+                //XMLConector.WriteXML(albums);
+                XMLConector.ReadXML(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "//SerializationOverview.xml");
+            }
         }
     }
 }

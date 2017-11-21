@@ -1,2 +1,3 @@
 language: csharp
 solution: Project2.sln
+os: Windows

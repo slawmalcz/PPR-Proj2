@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -14,10 +15,11 @@ namespace Project2
         /// SINGLETON INstance
 
         private static DataBaseOperator instance;
+        private SqlConnection conn;
 
         private DataBaseOperator()
         {
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (conn = new SqlConnection(connectionString))
             {
                 conn.Open();
             }
@@ -31,6 +33,21 @@ namespace Project2
                 }
                 return instance;
             }
+        }
+
+        /// Queries 
+        
+        public DataTable QueriesNo1(String sqlQuerry)
+        {
+            SqlDataAdapter da = new SqlDataAdapter();
+            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
+
+            da.SelectCommand = new SqlCommand(sqlQuerry, new SqlConnection(connectionString));
+            da.Fill(ds);
+            dt = ds.Tables[0];
+
+            return dt;
         }
     }
 }

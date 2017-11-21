@@ -58,8 +58,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataBaseOperator.cs" />
+    <Compile Include="DataModels\Albums.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XMLConector.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
