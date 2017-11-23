@@ -3,7 +3,7 @@ using System.IO;
 using System.Xml.Serialization;
 
 
-class XMLConector
+public class XMLConector
 {
     public static T ReadXML<T>(String path) where T : class
     {
