@@ -18,26 +18,20 @@ namespace Project2
             String test = Console.ReadLine();
             if (test.Equals("y"))
             {
-                DataBaseOperator dataBaseOperator = DataBaseOperator.Instance;
                 Console.WriteLine("Succes Database connection");
-                DataTable dataTable = dataBaseOperator.QueriesNo1(@"SELECT * FROM Albums");
+                DataTable dataTable = DataBaseOperator.ReadDB(Albums.ReturnDataTableView());
                 Console.WriteLine("Succes Data injection");
                 Console.WriteLine("Extracting data:");
-                PrintData(dataTable);
+                Albums albums = new Albums(dataTable);
+                XMLConector.WriteXML(albums, "TestoweAlbumy");
+                Albums albums1 = XMLConector.ReadXML<Albums>("TestoweAlbumy");
+                foreach(Album a in albums1.Album)
+                {
+                    Console.WriteLine(a.ToString());
+                }
 
             }
             Console.ReadLine();
-        }
-
-        private static void PrintData(DataTable dataTable)
-        {
-            foreach (DataRow dr in dataTable.Rows)
-            {
-                Albums albums = new Albums(dr);
-                //Console.WriteLine(albums.ToString());
-                //XMLConector.WriteXML(albums);
-                XMLConector.ReadXML(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "//SerializationOverview.xml");
-            }
         }
     }
 }

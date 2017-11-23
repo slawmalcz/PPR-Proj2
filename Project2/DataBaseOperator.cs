@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Project2.DataModels;
+using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Project2
 {
@@ -12,42 +9,29 @@ namespace Project2
     {
         public static String connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Mindi\Desktop\Studia\PRA\Project2\Project2\Music.mdf;Integrated Security=True";
 
-        /// SINGLETON INstance
-
-        private static DataBaseOperator instance;
-        private SqlConnection conn;
-
-        private DataBaseOperator()
+        public static DataTable ReadDB(String ObjectView)
         {
-            using (conn = new SqlConnection(connectionString))
-            {
-                conn.Open();
-            }
-        }
-
-        public static DataBaseOperator Instance {
-            get {
-                if (instance == null)
-                {
-                    instance = new DataBaseOperator();
-                }
-                return instance;
-            }
-        }
-
-        /// Queries 
-        
-        public DataTable QueriesNo1(String sqlQuerry)
-        {
+            String sqlQuerry = @"SELECT * FROM " + ObjectView;
             SqlDataAdapter da = new SqlDataAdapter();
             DataSet ds = new DataSet();
             DataTable dt = new DataTable();
-
             da.SelectCommand = new SqlCommand(sqlQuerry, new SqlConnection(connectionString));
             da.Fill(ds);
             dt = ds.Tables[0];
-
             return dt;
+        }
+
+        public static void WriteTODB<T>(T dataModel) where T : IDataModels
+        {
+            String SQLPass = "INSERT INTO " + dataModel.ReturnDataTableDeffinition() + " VALUES ";
+            SQLPass = SQLPass + dataModel.DataToDB();
+            try
+            {
+                new SqlCommand(SQLPass, new SqlConnection(connectionString));
+            }catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }

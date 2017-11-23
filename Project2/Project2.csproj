@@ -59,6 +59,9 @@
   <ItemGroup>
     <Compile Include="DataBaseOperator.cs" />
     <Compile Include="DataModels\Albums.cs" />
+    <Compile Include="DataModels\Artists.cs" />
+    <Compile Include="DataModels\IDataModels.cs" />
+    <Compile Include="DataModels\Tracks.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="XMLConector.cs" />
